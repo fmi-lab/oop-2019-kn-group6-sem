@@ -53,7 +53,7 @@ public:
         assert(arr != NULL);
     }
 
-    Vector(const T* arr_other, unsigned int length_other)
+    Vector(const T* arr_other, unsigned int length_other = 100)
     {
         arr = new T[length_other * 2];
         assert(arr);
