@@ -1,6 +1,7 @@
 #include<iostream>
 #include<cassert>
 #include<cmath>
+#include<iomanip>
 
 using namespace std;
 
@@ -53,25 +54,43 @@ public:
         assert(arr != NULL);
     }
 
-    Vector(const T* arr_other, unsigned int length_other)
+    Vector(const T* arr_other)
     {
-        arr = new T[length_other * 2];
+        arr = new T[arr_other.length_v * 2];
         assert(arr);
-        size_v = length_other * 2;
+        size_v = arr_other.length_v * 2;
         start_size = size_v;
-        for(int i = 0; i<length_other; i++)
+        for(int i = 0; i<arr_other.length_v; i++)
         {
             arr[i] = arr_other[i];
         }
-        length_v = length_other;
+        length_v = arr_other.length_v;
     }
 
     ~Vector()
     {
-        delete arr;
+        if(arr)
+        {
+            delete[] arr;
+        }
     }
 
-    void add_element(T elem)
+    Vector<T>& operator=(const Vector<T>& other){
+        if(this != &other){
+            if(this->arr){
+                delete this->arr;
+            }
+            this->arr = new T[other.length_v*2];
+            assert(this->arr);
+            for(int i = 0; i<other.length_v; i++){
+                this->arr[i] = other.arr[i];
+            }
+            length_v = other.length_v;
+        }
+        return *this;
+    }
+
+    void add_element(const T& elem)
     {
         if(length_v / size_v > 0.8)
         {
@@ -81,7 +100,7 @@ public:
         length_v ++;
     }
 
-    void add_element_at(T elem, unsigned int pos)
+    void add_element_at(const T& elem, unsigned int pos)
     {
         if(length_v / size_v > 0.8)
         {
@@ -102,7 +121,6 @@ public:
 
     bool remove_element_from(unsigned int pos)
     {
-        cout<<"removing "<<arr[pos]<<endl;
         if(pos >= length_v)
         {
             return false;
@@ -145,60 +163,47 @@ public:
         Vector<Vector<T> > result;
         for(int j = 0; j<length_v/slice_length; j++)
         {
-            Vector<T>* slice = new Vector<T>;
+            Vector<T>* slice_v = new Vector<T>;
             for(int i = 0; i<slice_length; i++)
             {
-                slice->add_element(this->arr[j*slice_length + i]);
+                slice_v->add_element(this->arr[j*slice_length + i]);
             }
-            result.add_element(*slice);
-            delete slice;
+
+            result.add_element(*slice_v);
+            delete slice_v;
         }
 
-        Vector<T>* slice = new Vector<T>();
+        Vector<T>* slice_v = new Vector<T>();
         for(int i = 0; i<length_v%slice_length; i++)
         {
-            slice->add_element(this->arr[i + length_v - length_v%slice_length]);
+            slice_v->add_element(this->arr[i + length_v - length_v%slice_length]);
         }
-        result.add_element(*slice);
-        delete slice;
+        result.add_element(*slice_v);
+        delete slice_v;
 
         return result;
     }
 };
 
-int main(){
+int main()
+{
     Vector<int> v1;
-    for(int i = 0; i<55; i++){
+    for(int i = 0; i<55; i++)
+    {
         v1.add_element(2*i);
     }
 
     Vector<Vector<int> > result = v1.slice(10);
 
-    for(int i = 0; i<6; i++){
-        for(int j = 0; j<result[i].get_length(); j++){
-            cout<<result[i][j]<<' ';
+    for(int i = 0; i<result.get_length(); i++)
+    {
+        for(int j = 0; j<result[i].get_length(); j++)
+        {
+            cout<<setw(4)<<result[i][j];
         }
         cout<<endl;
     }
 }
-
-
-
-//int main(){
-//    Vector <double>v1;
-//    v1.add_element(42.5);
-//    v1.add_element(30);
-//    v1.add_element(5);
-//    v1.add_element_at(6.5, 1);
-//
-//    Vector<char> v2;
-//    Vector<Vector<int> > v3;
-//
-////    v1[2] = 3; ERROR
-//    cout<<v1[2];
-//}
-
-
 
 
 
