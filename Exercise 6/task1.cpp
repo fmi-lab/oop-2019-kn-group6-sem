@@ -28,6 +28,5 @@ int main(){
     int result = reduce(filtered, new_size, 1, producer);
     cout<<result<<endl;
 
-
-
+    delete []filtered;
 }
