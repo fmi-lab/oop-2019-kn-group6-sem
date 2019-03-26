@@ -54,17 +54,29 @@ public:
         assert(arr != NULL);
     }
 
-    Vector(const T* arr_other)
-    {
-        arr = new T[arr_other.length_v * 2];
+    Vector(const Vector<T>& other){
+        arr = new T[other.length_v * 2];
         assert(arr);
-        size_v = arr_other.length_v * 2;
+        size_v = other.length_v * 2;
         start_size = size_v;
-        for(int i = 0; i<arr_other.length_v; i++)
+        for(int i = 0; i<other.length_v; i++)
+        {
+            arr[i] = other[i];
+        }
+        length_v = other.length_v;
+    }
+
+    Vector(const T* arr_other, size_t length_v) /// Not a copy constructor!
+    {
+        arr = new T[length_v * 2];
+        assert(arr);
+        size_v = length_v * 2;
+        start_size = size_v;
+        for(int i = 0; i<length_v; i++)
         {
             arr[i] = arr_other[i];
         }
-        length_v = arr_other.length_v;
+        length_v = length_v;
     }
 
     ~Vector()
@@ -148,13 +160,15 @@ public:
         return size_v;
     }
 
-    T operator[](unsigned int pos)const
+    T operator[](unsigned int pos) const
     {
+//        cout<<"operator[] const\n";
         return arr[pos];
     }
 
     T& operator[](unsigned int pos)
     {
+//        cout<<"operator[]\n";
         return arr[pos];
     }
 
@@ -203,6 +217,14 @@ int main()
         }
         cout<<endl;
     }
+
+
+    const Vector<int> v2(v1);
+    v1[3] = 5; /// calls &T operator=(...)
+    cout<<v2[3]; /// calls T operator=(...) const
+    /// v2[3] = 3; ERROR!!!
+
+
 }
 
 

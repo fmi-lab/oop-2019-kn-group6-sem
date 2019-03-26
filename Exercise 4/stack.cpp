@@ -1,6 +1,8 @@
 #include<iostream>
 using namespace std;
 
+/// Needs constructors and operator =
+
 template<typename T>
 struct node
 {

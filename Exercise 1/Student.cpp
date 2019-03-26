@@ -13,14 +13,14 @@ public:
     Student(){
         cout<<"Student constructor\n";
         name = new char[0];
+        assert(name);
         strcpy(name,"");
-//        assert(name);
         fn = 0;
     }
 
     ~Student(){
         cout<<"Student destructor "<<name<<endl;
-        delete name;
+        delete[] name;
     }
 
     int getFn(){
@@ -33,7 +33,7 @@ public:
 
     void setName(char* other_name){
         if(strlen(name) > 0){
-            delete name;
+            delete[] name;
         }
         name = new char[strlen(other_name) + 1];
         assert(name);
@@ -76,9 +76,9 @@ int main(){
     s2.setName("Ivelin");
     s2.printName();
 
-    while(true){
-        s2.setName("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-    }
+//    while(true){
+//        s2.setName("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+//    }
 }
 
 

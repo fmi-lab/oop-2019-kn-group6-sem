@@ -13,13 +13,11 @@ template <typename T>
 void increment (T& element){
     element ++;
 }
-//
+
 //int main(){
 //    int arr[] = {5,2,8,5,9,0,-1,30};
 //
-//    void (*p1) (int) = increment;
-//
-//    int *arr
+//    void (*p1) (int&) = increment;
 //
 //    map2(arr, 8, p1);
 //    for(int i = 0; i<8; i++){

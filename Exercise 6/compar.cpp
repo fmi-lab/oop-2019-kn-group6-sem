@@ -7,11 +7,11 @@ int compare_int(const void* el1, const void* el2){
     int elem2 = *(int*)el2;
 
     if(elem1 < elem2){
-        return 1;
+        return -1;
     } else if (elem1 == elem2){
         return 0;
     } else {
-        return -1;
+        return 1;
     }
 }
 

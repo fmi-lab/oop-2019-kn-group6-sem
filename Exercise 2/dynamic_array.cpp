@@ -20,7 +20,7 @@ private:
             for(int i = 0; i<length_v; i++){
                 arr_temp[i] = arr[i];
             }
-            delete arr;
+            delete[] arr;
             arr = arr_temp;
             size_v = (int)(size_v * 2);
         } else {
@@ -30,7 +30,7 @@ private:
             for(int i = 0; i<length_v; i++){
                 arr_temp[i] = arr[i];
             }
-            delete arr;
+            delete[] arr;
             arr = arr_temp;
             size_v = (int)(size_v / 2);
         }
@@ -57,7 +57,9 @@ public:
     }
 
     ~Vector(){
-        delete arr;
+        size_v = 0;
+        length_v = 0;
+        delete[] arr;
     }
 
     void add_element(T elem){
