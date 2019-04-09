@@ -1,3 +1,4 @@
+#pragma once
 #include "Person.h"
 #include<iostream>
 #include<cstring>
@@ -5,6 +6,7 @@
 
 Person::Person(const char* name, const char* EGN, unsigned int age): age(age)
 {
+    std::cout<<"Person(...)\n";
     this->name = new char[strlen(name) + 1];
     assert(this->name);
     strcpy(this->name, name);
@@ -13,6 +15,7 @@ Person::Person(const char* name, const char* EGN, unsigned int age): age(age)
 
 Person::Person(const Person& other): age(other.age)
 {
+    std::cout<<"Person(const Person&)\n";
     this->name = new char[strlen(other.name) + 1];
     assert(this->name);
     strcpy(this->name, other.name);
@@ -21,6 +24,7 @@ Person::Person(const Person& other): age(other.age)
 
 Person::~Person()
 {
+    std::cout<<"~Person()\n";
     if(this->name)
     {
         delete[] name;
@@ -29,6 +33,7 @@ Person::~Person()
 
 Person& Person::operator=(const Person& other)
 {
+    std::cout<<"Person::operator=\n";
     if(this != &other)
     {
         if(this->name)
@@ -44,9 +49,9 @@ Person& Person::operator=(const Person& other)
     }
 }
 
-int main() {
-    Person p1("Pesho", "0123456789", 20);
-}
+//int main() {
+//    Person p1("Pesho", "0123456789", 20);
+//}
 
 
 
