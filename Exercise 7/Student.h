@@ -10,4 +10,5 @@ public:
     Student(const Student&);
     ~Student();
     Student& operator=(const Student& other);
+    unsigned int get_fn() const;
 };

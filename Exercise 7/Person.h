@@ -10,4 +10,6 @@ public:
     Person(const Person&);
     ~Person();
     Person& operator=(const Person&);
+
+    void print_person()const;
 };

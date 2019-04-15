@@ -19,3 +19,7 @@ Student& Student::operator=(const Student& other){
         fn = other.fn;
     }
 }
+
+unsigned int Student::get_fn() const{
+    return fn;
+}

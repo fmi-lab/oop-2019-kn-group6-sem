@@ -49,6 +49,12 @@ Person& Person::operator=(const Person& other)
     }
 }
 
+void Person::print_person() const{
+    std::cout<<"name: "<<name<<std::endl;
+    std::cout<<"EGN: "<<EGN<<std::endl;
+    std::cout<<"age: "<<age<<std::endl;
+}
+
 //int main() {
 //    Person p1("Pesho", "0123456789", 20);
 //}
