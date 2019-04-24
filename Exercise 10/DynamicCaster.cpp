@@ -1,6 +1,5 @@
 #include "DynamicCaster.h"
 #include <iostream>
-
 Dynamic_caster::Dynamic_caster(): length(0) {}
 
 Dynamic_caster::Dynamic_caster(const Dynamic_caster& other): length(other.length)
