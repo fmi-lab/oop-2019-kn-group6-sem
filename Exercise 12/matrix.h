@@ -8,9 +8,9 @@ class Matrix{
 private:
     size_t width;
     size_t height;
-    vector<vector<int>> data;
 
 public:
+    vector<vector<int>> data;
     Matrix(size_t = 0, size_t = 0);
     Matrix(const Matrix&);
     Matrix& operator=(const Matrix&);
@@ -23,3 +23,7 @@ public:
 
 ostream& operator<<(ostream&, const Matrix&);
 istream& operator>>(istream&, Matrix&);
+
+
+
+

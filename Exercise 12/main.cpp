@@ -10,8 +10,8 @@ int main(){
 
         srand (time(NULL));
 
-    ofstream fout1("matrix1.txt", ios::out);
-    ofstream fout2("matrix2.txt", ios::out);
+    fstream fout1("matrix1.txt", ios::out);
+    fstream fout2("matrix2.txt", ios::out);
 
     fout1 << n <<' '<< m << endl;
     fout2 << m <<' '<< k << endl;
@@ -30,8 +30,14 @@ int main(){
     ifstream fin2("matrix2.txt", ios::in);
     fin2>>m2;
 
+//    for(int i = 0; i<n; i++){
+//        for(int j = 0; j<m; j++){
+            cout<<m1;
+//        }
+//    }
+
     m3 = m1*m2;
 
     ofstream fout("result.txt", ios::out);
-    fout<<m3;
+//    fout<<m3;
 }

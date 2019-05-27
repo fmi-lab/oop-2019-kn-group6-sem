@@ -56,17 +56,21 @@ istream& operator>>(istream& in, Matrix& mat)
 {
     in>>mat.height>>mat.width;
     mat.data.resize(mat.height);
-//    in.ignore();
+    in.ignore(1);
+    cout<<"peek = "<<in.peek()<<" = "<<(char)in.peek()<<endl;
+    cout<<"state = "<<in.rdstate()<<endl;
+    cout<<"goodbit = "<<in.good()<<"\neofbit = "<<in.eof()<<"\nfailbit = "<<in.fail()<<"\nbadbit = "<<in.bad()<<endl;
+    char buff;
+    in.clear();
+    while(in>>buff){
+        cout<<buff;
+    }
     for(int i = 0; i < mat.height; i++)
     {
         mat.data[i].resize(mat.width);
         for(int j = 0; j < mat.width; j++)
         {
-            /// *reads matrix
-//            char buff[5];
-//            in.getline(buff, 5, ' ');
-//            cout<<buff<<endl;
-//            cout<<mat.data[i][j];
+
         }
     }
 }
@@ -77,16 +81,16 @@ Matrix Matrix::operator*(const Matrix& other)const{
     for(int i = 0; i<width; i++){
         for(int j = 0; j<height; j++){
             for(int k = 0; k<other.width; k++){
-                cout<<data[j][i]<<" * "<<other.data[k][i]<<endl;
+//                cout<<data[j][i]<<" * "<<other.data[k][i]<<endl;
                 result.data[j][k] += data[j][i] * other.data[k][i];
             }
         }
     }
     for(int i = 0; i<result.height; i++){
         for(int j = 0; j<result.width; j++){
-            cout<<result.data[i][j]<<' ';
+//            cout<<result.data[i][j]<<' ';
         }
-        cout<<endl;
+//        cout<<endl;
     }
     return result;
     } else{
