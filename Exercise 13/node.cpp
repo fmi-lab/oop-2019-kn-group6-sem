@@ -12,7 +12,7 @@ node<T>::~node()
 {
     for(int i = 0; i<children.size(); i++)
     {
-        cout<<"~node("<<children[i]->value<<")"<<endl;
+//        cout<<"~node("<<children[i]->value<<")"<<endl;
         children[i]->~node();
         delete children[i];
     }
@@ -40,7 +40,6 @@ node<T>& node<T>::operator=(const node& other){
     return *this;
 }
 
-
 template<typename T>
 void node<T>::print()const
 {
@@ -55,26 +54,3 @@ template<typename T>
 void node<T>::add_child(const node& child){
         children.push_back(new node(child));
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
