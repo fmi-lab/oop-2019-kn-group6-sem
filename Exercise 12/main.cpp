@@ -10,19 +10,10 @@ int main(){
 
         srand (time(NULL));
 
-    fstream fout1("matrix1.txt", ios::out);
-    fstream fout2("matrix2.txt", ios::out);
+    ofstream fout1("matrix1.txt", ios::out);
+    ofstream fout2("matrix2.txt", ios::out);
 
-    fout1 << n <<' '<< m << endl;
-    fout2 << m <<' '<< k << endl;
 
-    for(int i = 0; i<n*m; i++){
-        fout1 << (rand() % 200 - 100) << ' ';
-    }
-
-    for(int i = 0; i<m*k; i++){
-        fout2 << (rand() % 200 - 100) << ' ';
-    }
 
     Matrix m1(n,m), m2(m,k), m3(n,k);
     ifstream fin1("matrix1.txt", ios::in);
@@ -30,14 +21,11 @@ int main(){
     ifstream fin2("matrix2.txt", ios::in);
     fin2>>m2;
 
-//    for(int i = 0; i<n; i++){
-//        for(int j = 0; j<m; j++){
-            cout<<m1;
-//        }
-//    }
+    cout<<m1;
+    cout<<m2;
 
     m3 = m1*m2;
 
     ofstream fout("result.txt", ios::out);
-//    fout<<m3;
+    fout<<m3;
 }

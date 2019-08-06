@@ -47,7 +47,7 @@ ostream& operator<<(ostream& out, const Matrix& mat)
     {
         for(int j = 0; j<mat.width; j++)
         {
-            out<<mat.data[i][j]<< ' ';
+            out<<mat.data[i][j]<<' ';
         }
     }
 }
@@ -60,19 +60,21 @@ istream& operator>>(istream& in, Matrix& mat)
     cout<<"peek = "<<in.peek()<<" = "<<(char)in.peek()<<endl;
     cout<<"state = "<<in.rdstate()<<endl;
     cout<<"goodbit = "<<in.good()<<"\neofbit = "<<in.eof()<<"\nfailbit = "<<in.fail()<<"\nbadbit = "<<in.bad()<<endl;
-    char buff;
-    in.clear();
-    while(in>>buff){
-        cout<<buff;
-    }
+    cout<<"***********************************\n";
+//    char buff;
+//    in.clear();
+//    while(in>>buff){
+//        cout<<buff;
+//    }
     for(int i = 0; i < mat.height; i++)
     {
         mat.data[i].resize(mat.width);
         for(int j = 0; j < mat.width; j++)
         {
-
+            in>>mat.data[i][j];
         }
     }
+    return in;
 }
 
 Matrix Matrix::operator*(const Matrix& other)const{
